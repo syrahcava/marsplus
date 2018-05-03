@@ -1,10 +1,10 @@
-/* 临时取消代码，添加到scripts中在git commit前进行编译检查 "precommit": "npm run lint-staged", */
 {
   "name": "ant-design-pro",
   "version": "1.2.1",
   "description": "An out-of-box UI solution for enterprise applications",
   "private": true,
   "scripts": {
+    "precommit": "npm run lint-staged",
     "start": "cross-env ESLINT=none roadhog dev",
     "start:no-proxy": "cross-env NO_PROXY=true ESLINT=none roadhog dev",
     "build": "cross-env ESLINT=none roadhog build",
