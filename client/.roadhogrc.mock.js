@@ -9,21 +9,7 @@ import { getChannels } from './mock/channels';
 import { format, delay } from 'roadhog-api-doc';
 
 // Marsplus mock
-import {
-  getOperationOverview,
-  // getOperationAnalysisUser,
-  // getOperationAnalysisInteractive,
-  // getOperationAnalysisArticle,
-  // getOperationAnalysisQR,
-  // getOperationAutoResponseKeyword,
-  // getOperationManageQR,
-  // getOperationManageTag,
-  // getOperationManageMessage,
-  // getOperationManageMaterialArticle,
-  // getOperationManageMaterialPicture,
-  // getOperationManageMaterialComposition,
-} from './mock/operation';
-// import { getMarketingApplicationForm } from './mock/marketing';
+import { getOperationOverview } from './mock/operation';
 import { getCustomerOverview, getCustomerList } from './mock/customer';
 
 // 是否禁用代理
@@ -88,18 +74,6 @@ const proxy = {
   }),
 
   'GET /api/operation/overview': getOperationOverview,
-  // 'GET /api/operation/analysis/user': getOperationAnalysisUser,
-  // 'GET /api/operation/analysis/interactive': getOperationAnalysisInteractive,
-  // 'GET /api/operation/analysis/article': getOperationAnalysisArticle,
-  // 'GET /api/operation/analysis/qr': getOperationAnalysisQR,
-  // 'GET /api/operation/auto_res/keyword': getOperationAutoResponseKeyword,
-  // 'GET /api/operation/manage_qr': getOperationManageQR,
-  // 'GET /api/operation/manage_tag': getOperationManageTag,
-  // 'GET /api/operation/manage_message': getOperationManageMessage,
-  // 'GET /api/operation/manage_material/article': getOperationManageMaterialArticle,
-  // 'GET /api/operation/manage_material/picture': getOperationManageMaterialPicture,
-  // 'GET /api/operation/manage_material/composition': getOperationManageMaterialComposition,
-  // 'GET /api/marketing/application_form': getMarketingApplicationForm,
   'GET /api/customer/overview': getCustomerOverview,
   'GET /api/customer/list': getCustomerList,
 
@@ -174,4 +148,8 @@ const proxy = {
   },
 };
 
-export default (noProxy ? {} : delay(proxy, 1000));
+// export default (noProxy ? {} : delay(proxy, 1000));
+
+export default {
+  'GET /api/(.*)': 'http://localhost:5000/api/',
+};

@@ -442,8 +442,6 @@ export const getCustomerList = (req, res) => {
   ];
 
   res.json({
-    id: 'btch56118899',
-    name: '北京清华长庚医院',
     customerArray,
   });
 };
