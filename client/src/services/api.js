@@ -82,56 +82,68 @@ export async function queryChannels() {
   return request('/api/channels');
 }
 
+// export async function queryOperationOverview() {
+//   return request('/api/operation/overview');
+// }
+//
+// export async function queryAnalysisUser() {
+//   return request('/api/operation/analysis/user');
+// }
+//
+// export async function queryAnalysisInteractive() {
+//   return request('/api/operation/analysis/interactive');
+// }
+//
+// export async function queryAnalysisArticle() {
+//   return request('/api/operation/analysis/article');
+// }
+//
+// export async function queryAnalysisQR() {
+//   return request('/api/operation/analysis/qr');
+// }
+//
+// export async function queryAutoResponseKeyword() {
+//   return request('/api/operation/auto_res/keyword');
+// }
+//
+// export async function queryManageQR() {
+//   return request('api/operation/manage_qr');
+// }
+//
+// export async function queryManageTag() {
+//   return request('api/operation/manage_tag');
+// }
+//
+// export async function queryManageMessage() {
+//   return request('api/operation/manage_message');
+// }
+//
+// export async function queryManageMaterialArticle() {
+//   return request('api/operation/manage_material/article');
+// }
+//
+// export async function queryManageMaterialPicture() {
+//   return request('api/operation/manage_material/picture');
+// }
+//
+// export async function queryManageMaterialComposition() {
+//   return request('api/operation/manage_material/composition');
+// }
+//
+// export async function queryApplicationForm() {
+//   return request('api/marketing/application_form');
+// }
+
 export async function queryOperationOverview() {
   return request('/api/operation/overview');
 }
 
-export async function queryAnalysisUser() {
-  return request('/api/operation/analysis/user');
+export async function queryCustomerOverview() {
+  return request('api/customer/overview');
 }
 
-export async function queryAnalysisInteractive() {
-  return request('/api/operation/analysis/interactive');
-}
-
-export async function queryAnalysisArticle() {
-  return request('/api/operation/analysis/article');
-}
-
-export async function queryAnalysisQR() {
-  return request('/api/operation/analysis/qr');
-}
-
-export async function queryAutoResponseKeyword() {
-  return request('/api/operation/auto_res/keyword');
-}
-
-export async function queryManageQR() {
-  return request('api/operation/manage_qr');
-}
-
-export async function queryManageTag() {
-  return request('api/operation/manage_tag');
-}
-
-export async function queryManageMessage() {
-  return request('api/operation/manage_message');
-}
-
-export async function queryManageMaterialArticle() {
-  return request('api/operation/manage_material/article');
-}
-
-export async function queryManageMaterialPicture() {
-  return request('api/operation/manage_material/picture');
-}
-
-export async function queryManageMaterialComposition() {
-  return request('api/operation/manage_material/composition');
-}
-
-export async function queryApplicationForm() {
-  return request('api/marketing/application_form');
+export async function queryCustomerOverviewMap() {
+  return request('data/china-geo.json')
 }
 
 export async function queryCustomerList() {

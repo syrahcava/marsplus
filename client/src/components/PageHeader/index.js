@@ -157,7 +157,6 @@ export default class PageHeader extends PureComponent {
       tabActiveKey,
       tabDefaultActiveKey,
       tabBarExtraContent,
-      channels,
     } = this.props;
     const clsString = classNames(styles.pageHeader, className);
     const breadcrumb = this.conversionBreadcrumbList();
@@ -172,20 +171,8 @@ export default class PageHeader extends PureComponent {
     return (
       <div className={clsString}>
         <Row>
-          <Col xl={18} lg={18} sm={24} xs={24}>
+          <Col xl={24} lg={24} sm={24} xs={24}>
             {breadcrumb}
-          </Col>
-          <Col xl={6} lg={6} sm={24} xs={24} style={{ textAlign: 'right' }}>
-            {channels &&
-              channels.length > 0 && (
-                <Select defaultValue={channels[0].id} style={{ width: 200 }}>
-                  {channels.map(channel => (
-                    <Select.Option key={channel.id} value={channel.id}>
-                      {channel.name}
-                    </Select.Option>
-                  ))}
-                </Select>
-              )}
           </Col>
         </Row>
         <div className={styles.detail}>

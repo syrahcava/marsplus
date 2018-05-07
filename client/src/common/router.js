@@ -78,78 +78,6 @@ export const getRouterData = app => {
     '/operation/overview': {
       component: dynamicWrapper(app, ['operation'], () => import('../routes/Operation/Overview')),
     },
-    '/operation/analysis': {
-      component: dynamicWrapper(app, ['operation'], () => import('../routes/Operation/Analysis')),
-    },
-    '/operation/analysis/user': {
-      component: dynamicWrapper(app, ['operation'], () =>
-        import('../routes/Operation/AnalysisUser')
-      ),
-    },
-    '/operation/analysis/interactive': {
-      component: dynamicWrapper(app, ['operation'], () =>
-        import('../routes/Operation/AnalysisInteractive')
-      ),
-    },
-    '/operation/analysis/article': {
-      component: dynamicWrapper(app, ['operation'], () =>
-        import('../routes/Operation/AnalysisArticle')
-      ),
-    },
-    '/operation/analysis/qr': {
-      component: dynamicWrapper(app, ['operation'], () => import('../routes/Operation/AnalysisQR')),
-    },
-    '/operation/auto-response': {
-      component: dynamicWrapper(app, ['operation'], () =>
-        import('../routes/Operation/AutoResponse')
-      ),
-    },
-    '/operation/auto-response/follow': {
-      component: dynamicWrapper(app, ['operation'], () =>
-        import('../routes/Operation/AutoResponseFollow')
-      ),
-    },
-    '/operation/auto-response/default': {
-      component: dynamicWrapper(app, ['operation'], () =>
-        import('../routes/Operation/AutoResponseDefault')
-      ),
-    },
-    '/operation/auto-response/keyword': {
-      component: dynamicWrapper(app, ['operation'], () =>
-        import('../routes/Operation/AutoResponseKeyword')
-      ),
-    },
-    '/operation/manage_qr': {
-      component: dynamicWrapper(app, ['operation'], () => import('../routes/Operation/ManageQR')),
-    },
-    '/operation/manage_tag': {
-      component: dynamicWrapper(app, ['operation'], () => import('../routes/Operation/ManageTag')),
-    },
-    '/operation/manage_message': {
-      component: dynamicWrapper(app, ['operation'], () =>
-        import('../routes/Operation/ManageMessage')
-      ),
-    },
-    '/operation/manage_material': {
-      component: dynamicWrapper(app, ['operation'], () =>
-        import('../routes/Operation/ManageMaterial')
-      ),
-    },
-    '/operation/manage_material/article': {
-      component: dynamicWrapper(app, ['operation'], () =>
-        import('../routes/Operation/ManageMaterialArticle')
-      ),
-    },
-    '/operation/manage_material/picture': {
-      component: dynamicWrapper(app, ['operation'], () =>
-        import('../routes/Operation/ManageMaterialPicture')
-      ),
-    },
-    '/operation/manage_material/composition': {
-      component: dynamicWrapper(app, ['operation'], () =>
-        import('../routes/Operation/ManageMaterialComposition')
-      ),
-    },
     /**
      * ************************* 运营管理 end ****************************
      */
@@ -157,111 +85,15 @@ export const getRouterData = app => {
     /**
      * ************************* 客户管理 begin **************************
      */
+    '/customer/overview': {
+      component: dynamicWrapper(app, ['customer'], () => import('../routes/Customer/Overview')),
+    },
     '/customer/list': {
       component: dynamicWrapper(app, ['customer'], () => import('../routes/Customer/CustomerList')),
     },
     /**
      * ************************* 客户管理 end ***************************
      */
-
-    /**
-     * ************************* 营销中心 begin ***************************
-     */
-    '/marketing/application_form': {
-      component: dynamicWrapper(app, ['marketing'], () =>
-        import('../routes/Marketing/ApplicationForm')
-      ),
-    },
-    /**
-     * ************************* 营销中心 end ***************************
-     */
-
-    '/dashboard/analysis': {
-      component: dynamicWrapper(app, ['chart'], () => import('../routes/Dashboard/Analysis')),
-    },
-    '/dashboard/monitor': {
-      component: dynamicWrapper(app, ['monitor'], () => import('../routes/Dashboard/Monitor')),
-    },
-    '/dashboard/workplace': {
-      component: dynamicWrapper(app, ['project', 'activities', 'chart'], () =>
-        import('../routes/Dashboard/Workplace')
-      ),
-      // hideInBreadcrumb: true,
-    },
-
-    // name: '工作台',
-    // authority: 'admin',
-
-    '/form/basic-form': {
-      component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/BasicForm')),
-    },
-    '/form/step-form': {
-      component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/StepForm')),
-    },
-    '/form/step-form/info': {
-      name: '分步表单（填写转账信息）',
-      component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/StepForm/Step1')),
-    },
-    '/form/step-form/confirm': {
-      name: '分步表单（确认转账信息）',
-      component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/StepForm/Step2')),
-    },
-    '/form/step-form/result': {
-      name: '分步表单（完成）',
-      component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/StepForm/Step3')),
-    },
-    '/form/advanced-form': {
-      component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/AdvancedForm')),
-    },
-    '/list/table-list': {
-      component: dynamicWrapper(app, ['rule'], () => import('../routes/List/TableList')),
-    },
-    '/list/basic-list': {
-      component: dynamicWrapper(app, ['list'], () => import('../routes/List/BasicList')),
-    },
-    '/list/card-list': {
-      component: dynamicWrapper(app, ['list'], () => import('../routes/List/CardList')),
-    },
-    '/list/search': {
-      component: dynamicWrapper(app, ['list'], () => import('../routes/List/List')),
-    },
-    '/list/search/projects': {
-      component: dynamicWrapper(app, ['list'], () => import('../routes/List/Projects')),
-    },
-    '/list/search/applications': {
-      component: dynamicWrapper(app, ['list'], () => import('../routes/List/Applications')),
-    },
-    '/list/search/articles': {
-      component: dynamicWrapper(app, ['list'], () => import('../routes/List/Articles')),
-    },
-    '/profile/basic': {
-      component: dynamicWrapper(app, ['profile'], () => import('../routes/Profile/BasicProfile')),
-    },
-    '/profile/advanced': {
-      component: dynamicWrapper(app, ['profile'], () =>
-        import('../routes/Profile/AdvancedProfile')
-      ),
-    },
-    '/result/success': {
-      component: dynamicWrapper(app, [], () => import('../routes/Result/Success')),
-    },
-    '/result/fail': {
-      component: dynamicWrapper(app, [], () => import('../routes/Result/Error')),
-    },
-    '/exception/403': {
-      component: dynamicWrapper(app, [], () => import('../routes/Exception/403')),
-    },
-    '/exception/404': {
-      component: dynamicWrapper(app, [], () => import('../routes/Exception/404')),
-    },
-    '/exception/500': {
-      component: dynamicWrapper(app, [], () => import('../routes/Exception/500')),
-    },
-    '/exception/trigger': {
-      component: dynamicWrapper(app, ['error'], () =>
-        import('../routes/Exception/triggerException')
-      ),
-    },
     '/user': {
       component: dynamicWrapper(app, [], () => import('../layouts/UserLayout')),
     },
