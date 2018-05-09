@@ -14,7 +14,7 @@ module.exports = app => {
   //   res.redirect("/surveys")
   // })
 
-  app.get("/api/currentUser", (req, res) => {
+  app.get("/api/currentUser", passport.authenticate('jwt', { session: false }), (req, res) => {
     res.send({
       name: 'admin',
       avatar: 'avatar.png',

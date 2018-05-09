@@ -2,13 +2,14 @@ const _ = require("lodash")
 const Path = require("path-parser")
 const {URL} = require("url")
 const mongoose = require("mongoose")
+const passport = require("passport")
 // const requireLogin = require("../middlewares/requireLogin")
 // const requireCredits = require("../middlewares/requireCredits")
 //
 // const Survey = mongoose.model("surveys")
 
 module.exports = app => {
-  app.get("/api/customer/overview", (req, res) => {
+  app.get("/api/customer/overview", passport.authenticate('jwt', { session: false }), (req, res) => {
     const ageRatio = [
       {
         x: '18~24岁',
@@ -88,7 +89,7 @@ module.exports = app => {
   })
 
 
-  app.get("/api/customer/list", (req, res) => {
+  app.get("/api/customer/list", passport.authenticate('jwt', { session: false }), (req, res) => {
     const customerArray = [
       {
         username: 'Panda',

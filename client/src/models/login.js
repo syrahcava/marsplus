@@ -1,7 +1,8 @@
 import { routerRedux } from 'dva/router';
-import { fakeAccountLogin } from '../services/api';
+import { accountLogin } from '../services/auth';
 import { setAuthority } from '../utils/authority';
 import { reloadAuthorized } from '../utils/Authorized';
+import token from '../utils/token';
 
 export default {
   namespace: 'login',
@@ -12,25 +13,33 @@ export default {
 
   effects: {
     *login({ payload }, { call, put }) {
-      const response = yield call(fakeAccountLogin, payload);
+      const response = yield call(accountLogin, payload);
       yield put({
-        type: 'changeLoginStatus',
+        type: 'saveLoginStatus',
         payload: response,
       });
+
+      token.save(response.data.token);
+
       // Login successfully
-      if (response.status === 'ok') {
+      if (response.errno === 0) {
         reloadAuthorized();
         yield put(routerRedux.push('/'));
       }
     },
     *logout(_, { put, select }) {
       try {
-        // get location pathname
-        const urlParams = new URL(window.location.href);
-        const pathname = yield select(state => state.routing.location.pathname);
-        // add the parameters in the url
-        urlParams.searchParams.set('redirect', pathname);
-        window.history.replaceState(null, 'login', urlParams.href);
+        token.remove();
+
+        // // get location pathname
+        // const urlParams = new URL(window.location.href);
+        // console.log(urlParams);
+        // const pathname = yield select(state => state.routing.location.pathname);
+        // console.log(pathname);
+        // // add the parameters in the url
+        // urlParams.searchParams.set('redirect', pathname);
+        // console.log(urlParams);
+        // window.history.replaceState(null, 'login', urlParams.href);
       } finally {
         yield put({
           type: 'changeLoginStatus',
@@ -46,12 +55,22 @@ export default {
   },
 
   reducers: {
+    saveLoginStatus(state, { payload }) {
+      // setAuthority(payload.currentAuthority);
+      setAuthority('admin');
+      return {
+        ...state,
+        status: payload.errno === 0 ? 'ok' : 'error',
+        token: payload.data.token,
+        user: payload.data.userInfo,
+      };
+    },
     changeLoginStatus(state, { payload }) {
-      setAuthority(payload.currentAuthority);
+      // setAuthority(payload.currentAuthority);
+      setAuthority('admin');
       return {
         ...state,
         status: payload.status,
-        type: payload.type,
       };
     },
   },

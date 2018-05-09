@@ -2,6 +2,7 @@ import fetch from 'dva/fetch';
 import { notification } from 'antd';
 import { routerRedux } from 'dva/router';
 import store from '../index';
+import token from './token';
 
 const codeMessage = {
   200: '服务器成功返回请求的数据。',
@@ -35,6 +36,11 @@ function checkStatus(response) {
   throw error;
 }
 
+function buildAuthorization() {
+  const tokenVal = token.get() || '';
+  return tokenVal !== '' ? tokenVal : '';
+}
+
 /**
  * Requests a URL, returning a promise.
  *
@@ -62,7 +68,17 @@ export default function request(url, options) {
         ...newOptions.headers,
       };
     }
+  } else {
+    newOptions.headers = {
+      Accept: 'application/json',
+      ...newOptions.headers,
+    };
   }
+  const authorization = buildAuthorization();
+  newOptions.headers = {
+    Authorization: authorization,
+    ...newOptions.headers,
+  };
 
   return fetch(url, newOptions)
     .then(checkStatus)

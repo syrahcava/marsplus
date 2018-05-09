@@ -5,6 +5,7 @@ const menuData = [
     name: '运营管理',
     icon: 'dashboard',
     path: 'operation',
+    authority: 'admin',
     children: [
       {
         name: '运营数据概览',
@@ -16,6 +17,7 @@ const menuData = [
     name: '客户管理',
     icon: 'profile',
     path: 'customer',
+    authority: 'admin',
     children: [
       {
         name: '客户数据概览',

@@ -15,10 +15,12 @@ export default {
   effects: {
     *fetchOverview(_, { call, put }) {
       const response = yield call(queryOperationOverview);
-      yield put({
-        type: 'saveOverview',
-        payload: response,
-      });
+      if (response) {
+        yield put({
+          type: 'saveOverview',
+          payload: response,
+        });
+      }
     },
   },
 
